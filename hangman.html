@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman Game</title>
+	<link rel="stylesheet" href="stylesheet.css">
+		
+
+</head>
+<body>
+
+	<div class="wrapper">	
+		<div class="header">
+			<h1 style="text-align:center;">Hangman!</h1>
+			<p> Use the alphabet to guess the word</p>
+		</div>
+		
+		<div id="wordDisplay"></div>
+		
+		
+			<!-- <form name="Guess">
+				<input name="letter" type="text" maxlength="1">
+				<input class="textBox" name="submit" type="button" value="Guess">
+				 -->
+
+		<p id="wrongletters1">Wrong Letters:</p>
+
+		<!-- put in pictures here -->
+		<img src="http://www.writteninpencil.de/Projekte/Hangman/hangman0.png" id="hangman"><br/>
+
+		
+			<input name="refresh" type="button" value="New Game" onClick="location.reload()">
+			
+			</form>
+			
+
+	</div>
+	<script type="text/javascript" src="hangman1.js"></script>
+</body>
+</html>
