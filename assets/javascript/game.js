@@ -1,79 +1,61 @@
 /*** Pokemon arry and its objects ***/
 
-var pokemonArray = [
+var passwordArray = [
     {
-        word: "charmander",
-        image1: "assets/images/charmander.png",
-        image2: "assets/images/charmander_k.png"
+        word: "atomic",
+        image1: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Stylised_atom_with_three_Bohr_model_orbits_and_stylised_nucleus.svg/200px-Stylised_atom_with_three_Bohr_model_orbits_and_stylised_nucleus.svg.png",
+        image2: "https://pbs.twimg.com/profile_images/604006309873225728/_VIOSV96.png"
     },
 
     {
-        word: "squirtle",
-        image1: "assets/images/squirtle.png",
-        image2: "assets/images/squirtle_k.png"
+        word: "nuclear",
+        image1: "https://r.hswstatic.com/w_907/gif/what-would-nuclear-winter-be-like-1.jpg",
+        image2: "https://www.esi-africa.com/wp-content/uploads/2016/09/Nuclear-image.jpg"
     },
 
     {
-        word: "bulbasaur",
-        image1: "assets/images/bulbasaur.png",
-        image2: "assets/images/bulbasaur_k.png"
+        word: "military",
+        image1: "https://images04.military.com/sites/default/files/media/join-the-military/2015/11/junglepatrol.jpg",
+        image2: "https://images04.military.com/sites/default/files/media/join-the-military/2015/11/junglepatrol.jpg"
     },
 
     {
-        word: "pikachu",
-        image1: "assets/images/pikachu.png",
-        image2: "assets/images/pikachu_k.png"
+        word: "university",
+        image1: "https://cdn.the-scientist.com/assets/articleNo/64292/iImg/26721/a6aab0fc-06c7-4bf9-8d4e-d52de026550e-uni-640.jpg",
+        image2: "https://cdn.the-scientist.com/assets/articleNo/64292/iImg/26721/a6aab0fc-06c7-4bf9-8d4e-d52de026550e-uni-640.jpg"
     },
 
     {
-        word: "eevee",
-        image1: "assets/images/eevee.png",
-        image2: "assets/images/eevee_k.png"
+        word: "hotel",
+        image1: "https://s-ec.bstatic.com/images/hotel/max1280x900/101/101430248.jpg",
+        image2: "https://s-ec.bstatic.com/images/hotel/max1280x900/101/101430248.jpg"
     },
 
     {
-        word: "articuno",
-        image1: "assets/images/articuno.png",
-        image2: "assets/images/articuno_k.png"
+        word: "russia",
+        image1: "http://cdn4.spiegel.de/images/image-95693-640_panofree-itrp-95693.jpg",
+        image2: "http://cdn4.spiegel.de/images/image-95693-640_panofree-itrp-95693.jpg"
     },
 
     {
-        word: "zapdos",
-        image1: "assets/images/zapdos.png",
-        image2: "assets/images/zapdos_k.png"
-    },
-
-    {
-        word: "moltres",
-        image1: "assets/images/moltres.png",
-        image2: "assets/images/moltres_k.png"
-    },
-
-    {
-        word: "ditto",
-        image1: "assets/images/ditto.png",
-        image2: "assets/images/ditto_k.png"
-    },
-
-    {
-        word: "mew",
-        image1: "assets/images/mew.png",
-        image2: "assets/images/mew_k.png"
+        word: "machine",
+        image1: "https://pbs.twimg.com/profile_images/739515667737645056/Rg0anujY_400x400.jpg",
+        image2: "https://pbs.twimg.com/profile_images/739515667737645056/Rg0anujY_400x400.jpg"
     }]
 
 // gameStatus variable  for starting and stopping the game. set the var to a falsy
 var gameStatus = false;
 
 // generates randomNumber variable
-var randomNumber = Math.floor(Math.random() * pokemonArray.length);
+var randomNumber = Math.floor(Math.random() * passwordArray.length);
 
 // applies the var randomNumber to obtain random answer ojbect form my pokemonArray
-var pokemon = pokemonArray[randomNumber].word;
-var pokemonImage1 = pokemonArray[randomNumber].image1
-var pokemonImage2 = pokemonArray[randomNumber].image2
+var password = passwordArray[randomNumber].word;
+var passwordImage1 = passwordArray[randomNumber].image1
+var passwordImage2 = passwordArray[randomNumber].image2
 
 // shows array length of pokemon variable to determin the letters remaining
-var lettersRemaining = pokemon.length;
+var lettersRemaining = password.length;
 
 // creates answer that can have values pushed into
 var answerArray = [];
@@ -108,7 +90,7 @@ var winScore = 0;
 var lossesShown = 0;
 function correctGuessCheck(guess) {
 
-  if (pokemon.indexOf(guess.key) >= 0) {
+  if (password.indexOf(guess.key) >= 0) {
     correctGuess(guess);
 
   } else {
@@ -124,10 +106,10 @@ function correctGuess(guess) {
 }
 
 function addCorrectLetter(guess) {
-  for (var l = 0; l < pokemon.length; l++) {
+  for (var l = 0; l < password.length; l++) {
 
     // if the letter matches an existing letter in the answer this if statement pushes the correct letter to answerArray in upperCase method
-    if (guess.key === pokemon[l]) {
+    if (guess.key === password[l]) {
       answerArray[l] = guess.key.toUpperCase();
       displayCurrentWord();
       lettersRemaining--;
@@ -213,20 +195,20 @@ function displayCurrentWord() {
 // displays silhouette of pokemon like who's that pokemon
 function displayImage() {
   var pictureDisplay = document.querySelector("#pictureDisplay");
-  pictureDisplay.src = pokemonImage2;
+  pictureDisplay.src = passwordImage2;
 }
 
 // reveals pokemon identiy on win or loss
 function changeImage() {
   var pictureDisplay = document.querySelector("#pictureDisplay");
-  pictureDisplay.src = pokemonImage1;
+  pictureDisplay.src = passwordImage1;
   gameStatus = false;
 }
 
 // showS answer if user fails
 function displayAnswer() {
   var revealedAnswerDisplay = document.querySelector("#revealedAnswerDisplay");
-  revealedAnswerDisplay.textContent = pokemon.toUpperCase();
+  revealedAnswerDisplay.textContent = password.toUpperCase();
 }
 
 // turns current word to green
@@ -249,24 +231,24 @@ function init() {
   // changes gaemStatus to true
   gameStatus = true;
 
-  // generates random number with math.floor and multiplying pokemon array's length
-  randomNumber = Math.floor(Math.random() * pokemonArray.length);
+  // generates random number with math.floor and multiplying array's length
+  randomNumber = Math.floor(Math.random() * passwordArray.length);
 
   // apply randomNumber to fetch random word which is the answer, and its synced Images
 
-  pokemon = pokemonArray[randomNumber].word;
-  pokemonImage1 = pokemonArray[randomNumber].image1;
-  pokemonImage2 = pokemonArray[randomNumber].image2;
+  password = passwordArray[randomNumber].word;
+  passwordImage1 = passwordArray[randomNumber].image1;
+  passwordImage2 = passwordArray[randomNumber].image2;
 
   // shows the arrany length for lettersRemaining till the win
-  lettersRemaining = pokemon.length;
+  lettersRemaining = password.length;
 
   // sets the array to an empty string
   answerArray = [];
 
   // for loop converts word answer into an array instead of using a push command. pushes the length and increments
-  for (var i = 0; i < pokemon.length; i++) {
-    if (pokemon[i] === "+") {
+  for (var i = 0; i < password.length; i++) {
+    if (password[i] === "+") {
       answerArray[i] = "&nbsp;";
     } else {
 
@@ -292,14 +274,14 @@ function init() {
     revealedAnswerDisplay.textContent = "";
 
     // pllays audio for the clip whos that pokemon?
-    document.getElementById('whosThatPokemon').play();
+    document.getElementById('MissionImpossible').play();
 
     document.getElementById("playMusic").addEventListener("click", function(){
-      document.getElementById("pokemonTheme").play();
+      document.getElementById("MissionImpossible").play();
     });
 
     document.getElementById("pauseMusic").addEventListener("click", function(){
-      document.getElementById("pokemonTheme").pause();
+      document.getElementById("MissionImpossible").pause();
     });
 
     // removes correct color on word when finished and restarting game
